@@ -8,7 +8,10 @@ import { Global } from '@jest/types';
 
 const imagemFundo = require('./images/se_beber_nao_dirija_100x133.png');
 const imagemBebum = require('./images/bebum_36x36.png');
-const largura = 88;
+const largura = {};
+const altura = {};
+const x = {};
+const y = {};
 
 const styles = StyleSheet.create({
   boxMain: {
@@ -69,11 +72,15 @@ export default class Page1 extends Component {
 
   constructor() {
     super();
-    largura1=Dimensions.get('window').width;
+    largura1=Math.round(Dimensions.get('window').width * 100) / 100;
+    altura1=Math.round(Dimensions.get('window').height * 100) / 100;
   }
   
   state = { 
     largura:{},
+    altura:{},
+    x:{},
+    y:{},
     width9:{},
   //imagemFundo: require('./images/se_beber_nao_dirija_100x133.png'),
   //image2: require('../images/drunk3.gif'),
@@ -121,17 +128,20 @@ export default class Page1 extends Component {
         </View>
         
         <View
-          style={{ width:'auto', marginTop:5, backgroundColor:'#CFC'}}
+          style={{ width:'auto', marginTop:5, padding:5, backgroundColor:'#CFC'}}
           onLayout={event => {
             this.setState({
-              width9: event.nativeEvent.layout.width  
+              largura: Math.round(event.nativeEvent.layout.width * 100) / 100,
+              altura: Math.round(event.nativeEvent.layout.height * 100) / 100,
+              x: Math.round(event.nativeEvent.layout.x * 100) / 100,
+              y: Math.round(event.nativeEvent.layout.y * 100) / 100,
             })
           }}
         >
-          <Text>Dimensões    kkkkkk</Text>
-          <Text>{`${largura1}`}</Text>
-          <Text>{`${largura}`}</Text>
-          <Text>{`${this.state.width9}`}</Text>
+          <Text>Dimensões:</Text>
+          <Text>window = {`${largura1}`}  -  {`${altura1}`}</Text>
+          <Text>view = {`${this.state.largura}`}  -  {`${this.state.altura}`}</Text>
+          <Text>view = {`${this.state.x}`}  -  {`${this.state.y}`}</Text>
         </View>
 
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: 'auto' }}>
