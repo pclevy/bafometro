@@ -1,7 +1,7 @@
 // src/index.js
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Button, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Button, Text, Dimensions, Animated } from 'react-native';
 
 import Sound from 'react-native-sound';
 import { Global } from '@jest/types';
@@ -85,8 +85,31 @@ export default class Page1 extends Component {
   //imagemFundo: require('./images/se_beber_nao_dirija_100x133.png'),
   //image2: require('../images/drunk3.gif'),
   //image9: {}
-};
+  };
+
+
+/*
+  this.state = {
+    slide: new Animated.ValueXY()
+  }
   
+  this.slideRight = Animated.spring(
+    this.state.slide, {
+      toValue: { x:20, y:0 }
+    }
+  )
+
+  <Animated.View
+    style={
+      this.slideRight.getLayout()
+    }
+  />
+
+  this.slideRight.start()
+
+
+*/
+
   async Tocar() {
     const requireAudio = require('./sounds/siren.mp3');
     const sound = new Sound(requireAudio, (error) => {
